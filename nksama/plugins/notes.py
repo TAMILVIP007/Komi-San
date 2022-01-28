@@ -57,12 +57,7 @@ def notes(_,message):
     #         notes = x
 
     for x in db.find({"chat_id": message.chat.id}):
-        if notes:
-            notes = f"{notes}\n{x['note_name']}"
-        
-        else:
-            notes = x['note_name']
-    
+        notes = f"{notes}\n{x['note_name']}" if notes else x['note_name']
     message.reply(notes)
 
     
